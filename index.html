@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>知命ssh公钥</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        div {
+            white-space: normal;
+            word-break: break-all;
+            work-warp: break-word;
+        }
+        textarea {
+            position:absolute;
+            top:-200px;
+        }
+        .page-header{
+            width: 90%;
+            margin-left:1%;
+        }
+        .jumbotron{
+            width: 80%;
+            margin: 2% auto 0;
+            background-color: #f0f0f0;
+            padding: 2% 5%;
+            border-radius: 10px
+        }
+        .pager{
+            width: 40%;
+            margin: 2% auto 0;
+            background-color: #f0f0f0;
+            padding: 2% 5%;
+            border-radius: 10px
+        }
+        .left{
+            float:left;
+        }
+        .right{
+            float:right;
+        }
+    </style>
+
+    <script>
+
+        function copy(){
+            var ssh= document.getElementById("ssh");
+            if(ssh.value!=""){
+                ssh.select();
+                document.execCommand("copy");
+
+                try{
+                    if(document.execCommand('copy', false, null)){
+                        alert("复制成功。");
+                    }
+                    else{
+                        alert("不支持copy方法。");
+                    }
+                } catch(err){
+                    alert("不支持execCommand.");
+                }
+
+            }
+            else{
+                alert("没有可复制的内容。");
+            }
+        }
+        function download(){
+            var url = "id_rsa.pub";
+            window.location=url;
+        }
+    </script>
+
+</head>
+<body>
+<div class="page-header">
+    <h1>知命ssh公钥<small> copy & download</small></h1>
+</div>
+
+<div class="jumbotron">
+    <textarea id="ssh">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCdFePww/qA1zvq9zX9LTH7yDhpyC1kJ3GkTxQLfWFJAQaFLHnCl8xAQuK4xVHlLl88UbUwKQEKcJvXKuiN4xAmpWkZbeoD4CbQjPfAG+2B7Ztgnl7IsGzsfFQzta+kbiJJCSpS+/t0MU53GITLoAfL5A19WjJFqiWRiPI3ws+XpyiTooHS8eynfParTNXCaq18oN4K8WshlUuZRXDxO63Jr9CfIzanUgjywF9Da64k1QgwgCKmjPLxDgk3VoiUPja8/gRi9ZddieIKz7uSLmjSBqaVElholgyZDX5fpr9DW17ng+rF+XvX1WJxYcgeOBK7BLYJm24LzoCN29dyah4AXYNK6ywL9tZjLeBrVOgL3OeWeI5OSia174LW3be32d8xoOsQjhi0JwFdXI0h0RzhhiBvlovXz6o7nwJAlDvFEqaj/iJLTjWo3YcEaT/WXCYqzYvqLvBDMAub0wG9GC5nB4PMGGHu8mb/0+dIbBm8m5k1DZMT5ZLcttZdV+v6apVQcf/YYUdcq2/jJnOS9SntKWC2T2Tf8vSCxeLU8RkoMsf1P19qjdz75TyiBOTKkX1iFHOV/N4LbehaLJpONFfvjJDLoXKqiJpsBRTP0AatQTIaumfg55GONVHKGgS7eUjbyZKKChVH4K60Tlg8EtGW0uA73B/if7SjBqYmOOBOFQ== ssh@ovo.gs</textarea>
+    <h3>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCdFePww/qA1zvq9zX9LTH7yDhpyC1kJ3GkTxQLfWFJAQaFLHnCl8xAQuK4xVHlLl88UbUwKQEKcJvXKuiN4xAmpWkZbeoD4CbQjPfAG+2B7Ztgnl7IsGzsfFQzta+kbiJJCSpS+/t0MU53GITLoAfL5A19WjJFqiWRiPI3ws+XpyiTooHS8eynfParTNXCaq18oN4K8WshlUuZRXDxO63Jr9CfIzanUgjywF9Da64k1QgwgCKmjPLxDgk3VoiUPja8/gRi9ZddieIKz7uSLmjSBqaVElholgyZDX5fpr9DW17ng+rF+XvX1WJxYcgeOBK7BLYJm24LzoCN29dyah4AXYNK6ywL9tZjLeBrVOgL3OeWeI5OSia174LW3be32d8xoOsQjhi0JwFdXI0h0RzhhiBvlovXz6o7nwJAlDvFEqaj/iJLTjWo3YcEaT/WXCYqzYvqLvBDMAub0wG9GC5nB4PMGGHu8mb/0+dIbBm8m5k1DZMT5ZLcttZdV+v6apVQcf/YYUdcq2/jJnOS9SntKWC2T2Tf8vSCxeLU8RkoMsf1P19qjdz75TyiBOTKkX1iFHOV/N4LbehaLJpONFfvjJDLoXKqiJpsBRTP0AatQTIaumfg55GONVHKGgS7eUjbyZKKChVH4K60Tlg8EtGW0uA73B/if7SjBqYmOOBOFQ== ssh@ovo.gs</h3>
+    <p class="pager">
+        <button class="btn btn-primary btn-lg left" role="button" onclick="copy()">复制ssh公钥</button>
+        <button class="btn btn-primary btn-lg right " role="button" onclick="download()">下载ssh公钥</button>
+    </p>
+</div>
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</body>
+</html>
